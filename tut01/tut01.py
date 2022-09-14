@@ -31,3 +31,18 @@ n=29745 #NUMBER OF ROWS EXCEPT HEADER
 u_average=U_SUMMATION/n
 v_average=V_SUMMATION/n
 w_average=W_SUMMATION/n
+
+X=Y=Z=0 #DECLARING 3 VARIABLES FOR THE PURPOSE OF COUNTING WITH INITIAL VALUE 0
+
+with open('octant_input.csv','r') as file:
+    reader = csv.reader(file)
+    for rows in reader:
+        if (rows[1]!='U'): #TO SKIP THE HEADER ROW
+            LIST1.insert(X,float(rows[1])-u_average) #TO INSERT THE VALUES OF DIFFERENCE (U-U_AVG) INTO LIST 1
+            X+=1
+        if (rows[2]!='V'):
+            LIST2.insert(Y,float(rows[2])-v_average)
+            Y+=1
+        if (rows[3]!='W'):
+            LIST3.insert(Z,float(rows[3])-w_average)
+            Z+=1

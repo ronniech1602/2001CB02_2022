@@ -74,6 +74,42 @@ while(a<len(LIST1)):
             ovcount_neg4+=1
     a+=1
 
+#DEFINING THE MOD FUNCTION 
+def mod_func(mod):
+    mod_1=mod_2=mod_3=mod_4=mod_neg1=mod_neg2=mod_neg3=mod_neg4=0
+    m=n=0
+    p=mod
+    #WHILE LOOP , THE NUMBER OF TIMES IT RUNS DEPENDS ON 'p'
+    while(m<len(LIST1)/p):
+        #NESTED WHILE LOOP TO COUNT THE OCTANT NUMBER
+        while(n<mod):
+            if(LIST1[n]>0 and LIST2[n]>0):
+                if(LIST3[n]>0):
+                    mod_1+=1
+                else:
+                    mod_neg1+=1
+            elif(LIST1[n]<0 and LIST2[n]>0):
+                if(LIST3[n]>0):
+                    mod_2+=1
+                else:
+                    mod_neg2+=1
+            elif(LIST1[n]<0 and LIST2[n]<0):
+                if(LIST3[n]>0):
+                    mod_3+=1
+                else:
+                    mod_neg3+=1
+            elif(LIST1[n]>0 and LIST2[n]<0):
+                if(LIST3[n]>0):
+                    mod_4+=1
+                else:
+                    mod_neg4+=1
+            n+=1
+        mod+=p
+        m+=1
+        print(mod_1,mod_neg1,mod_2,mod_neg2,mod_3,mod_neg3,mod_4,mod_neg4)
+    return
 
+mod=int(input('input the mod value: ')) #INPUT FROM USER
+mod_func(mod) #FUNCTION CALL
      
     

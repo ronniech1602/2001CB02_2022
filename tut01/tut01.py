@@ -46,3 +46,34 @@ with open('octant_input.csv','r') as file:
         if (rows[3]!='W'):
             LIST3.insert(Z,float(rows[3])-w_average)
             Z+=1
+
+#OVCOUNT REFERS TO OVERALL COUNT , 1 REFERS TO OCTANT '1' AND NEG1 REFERS  TO OCTANT '-1'
+a=ovcount_1=ovcount_2=ovcount_3=ovcount_4=ovcount_neg1=ovcount_neg2=ovcount_neg3=ovcount_neg4=0
+
+#WHILE LOOP FOR CALCULATING OVERALL COUNT THROUGH IF-ELSE STATEMENTS
+while(a<len(LIST1)):
+    if(LIST1[a]>0 and LIST2[a]>0):
+        if(LIST3[a]>0):
+            ovcount_1+=1
+        else:
+            ovcount_neg1+=1
+    elif(LIST1[a]<0 and LIST2[a]>0):
+        if(LIST3[a]>0):
+            ovcount_2+=1
+        else:
+            ovcount_neg2+=1
+    elif(LIST1[a]<0 and LIST2[a]<0):
+        if(LIST3[a]>0):
+            ovcount_3+=1
+        else:
+            ovcount_neg3+=1
+    elif(LIST1[a]>0 and LIST2[a]<0):
+        if(LIST3[a]>0):
+            ovcount_4+=1
+        else:
+            ovcount_neg4+=1
+    a+=1
+
+
+     
+    

@@ -67,6 +67,36 @@ ws.cell(row=1,column=10).value="W'"
 for i in range(2,len(list6)+2):
     ws.cell(row=i,column=10).value=list6[i-2]
     
+ws.cell(row=1,column=11).value="Count"
+list7=[]
+for i in range (0,len(list1)):
+    if list4[i]>0 and list5[i]>0:
+        if list6[i]>0:
+            list7.append(+1)
+        else:
+            list7.append(-1)
+        
+    if list4[i]>0 and list5[i]<0:
+        if list6[i]>0:
+            list7.append(+4)
+        else:
+            list7.append(-4)
+        
+    if list4[i]<0 and list5[i]>0:
+        if list6[i]>0:
+            list7.append(+2)
+        else:
+            list7.append(-2)
+        
+    if list4[i]<0 and list5[i]<0:
+        if list6[i]>0:
+            list7.append(+3)
+        else:
+            list7.append(-3)
+        
+
+for i in range(2,len(list7)+2):
+    ws.cell(row=i,column=11).value=list7[i-2]
 
     
 

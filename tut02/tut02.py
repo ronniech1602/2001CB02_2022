@@ -97,6 +97,50 @@ for i in range (0,len(list1)):
 
 for i in range(2,len(list7)+2):
     ws.cell(row=i,column=11).value=list7[i-2]
+    
+ws.cell(row=2,column=13).value="Overall Count"
+ws.cell(row=3,column=12).value="User Input"
+list8=[+1,-1,+2,-2,+3,-3,+4,-4]
+for i in range(0,8):
+    ws.cell(row=1,column=i+14).value=list8[i]
+   
+ws.cell(row=2,column=14).value=list7.count(+1)
+ws.cell(row=2,column=15).value=list7.count(-1)
+ws.cell(row=2,column=16).value=list7.count(+2)
+ws.cell(row=2,column=17).value=list7.count(-2)
+ws.cell(row=2,column=18).value=list7.count(+3)
+ws.cell(row=2,column=19).value=list7.count(-3)
+ws.cell(row=2,column=20).value=list7.count(+4)
+ws.cell(row=2,column=21).value=list7.count(-4)
+
+mod=5000
+ws.cell(row=3,column=13).value="Mod"+str(mod)
+
+mod_ranges=[]
+p=(len(list1)//mod)+1
+cl=[]
+for i in range(0,p):
+    l=[]
+    cl.append(l)
+
+a=0
+
+for y in range(0,p):
+    for x in range(a,a+mod):
+        if x<=len(list1)-1:
+            cl[y].append(list7[x])
+    a=a+mod
+
+for i in range(0,p): 
+    ws.cell(row=4+i,column=13).value=str(mod*i+1)+"-"+str(mod*(i+1))
+    ws.cell(row=4+i,column=14).value=cl[i].count(+1)
+    ws.cell(row=4+i,column=15).value=cl[i].count(-1)
+    ws.cell(row=4+i,column=16).value=cl[i].count(+2)
+    ws.cell(row=4+i,column=17).value=cl[i].count(-2)
+    ws.cell(row=4+i,column=18).value=cl[i].count(+3)
+    ws.cell(row=4+i,column=19).value=cl[i].count(-3)
+    ws.cell(row=4+i,column=20).value=cl[i].count(+4)
+    ws.cell(row=4+i,column=21).value=cl[i].count(-4)
 
     
 

@@ -67,7 +67,7 @@ ws.cell(row=1,column=10).value="W'"
 for i in range(2,len(list6)+2):
     ws.cell(row=i,column=10).value=list6[i-2]
     
-ws.cell(row=1,column=11).value="Count"
+ws.cell(row=1,column=11).value="Octants"
 list7=[]
 for i in range (0,len(list1)):
     if list4[i]>0 and list5[i]>0:

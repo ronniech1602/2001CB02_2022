@@ -40,3 +40,36 @@ for i in range(1,3):
 for i in range(1,3):
     ws.cell(row=i,column=7).value=Wa[i-1]
 
+list4=[]
+for i in list1:
+    tmp=i-Uavg
+    list4.append(tmp)
+    
+ws.cell(row=1,column=8).value="U'"
+for i in range(2,len(list4)+2):
+    ws.cell(row=i,column=8).value=list4[i-2]
+    
+list5=[]
+for i in list2:
+    tmp=i-Vavg
+    list5.append(tmp)
+    
+ws.cell(row=1,column=9).value="V'"
+for i in range(2,len(list5)+2):
+    ws.cell(row=i,column=9).value=list5[i-2]
+    
+list6=[]
+for i in list3:
+    tmp=i-Wavg
+    list6.append(tmp)
+    
+ws.cell(row=1,column=10).value="W'"
+for i in range(2,len(list6)+2):
+    ws.cell(row=i,column=10).value=list6[i-2]
+    
+
+    
+
+    
+
+

@@ -319,7 +319,19 @@ for i in range(0,8):
     ws.cell(row=p+16,column=14+i).value=A7[i]
     ws.cell(row=p+17,column=14+i).value=A8[i]
 
-wb.save("abcd.xlsx") 
+for x in range(0,p):
+    if x<p:
+        ws.cell(row=p+21+13*x,column=13).value="Mod Transition Count"
+        if mod*(x+1)<=len(list1):
+            ws.cell(row=p+22+13*x,column=13).value=str(mod*x+1)+"-"+str(mod*(x+1))
+        else:
+            ws.cell(row=p+22+13*x,column=13).value=str(mod*x+1)+"-"+str(len(list1))
+        ws.cell(row=p+22+13*x,column=14).value="To"
+        ws.cell(row=p+24+13*x,column=12).value="From"
+        ws.cell(row=p+23+13*x,column=13).value="Count"
+        for i in range(0,8):
+            ws.cell(row=p+23+13*x,column=14+i).value=list8[i]
+            ws.cell(row=p+24+13*x+i,column=13).value=list8[i]
 
     
 

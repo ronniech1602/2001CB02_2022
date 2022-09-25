@@ -2,8 +2,8 @@ from openpyxl import load_workbook
 import pandas as pd
 import numpy as np
 
-wb=load_workbook("input_octant_transition_identify.xlsx")
-df=pd.read_excel("input_octant_transition_identify.xlsx")
+wb=load_workbook("input_octant_longest_subsequence.xlsx")
+df=pd.read_excel("input_octant_longest_subsequence.xlsx")
 ws=wb.worksheets[0]
 
 list1=df.U
@@ -121,3 +121,4 @@ for x in range(0,len(list7)):
         pos[6].append(x)
     elif list7[x]==-4:
         pos[7].append(x)
+        

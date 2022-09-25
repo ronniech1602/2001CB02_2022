@@ -2,8 +2,8 @@ from openpyxl import load_workbook
 import pandas as pd
 import numpy as np
 
-wb=load_workbook(r"C:\Users\Acer\Documents\GitHub\CS384_2022\tut02\input_octant_transition_identify.xlsx")
-df=pd.read_excel(r"C:\Users\Acer\Documents\GitHub\CS384_2022\tut02\input_octant_transition_identify.xlsx")
+wb=load_workbook("input_octant_transition_identify.xlsx")
+df=pd.read_excel("input_octant_transition_identify.xlsx")
 ws=wb.worksheets[0]
 
 list1=df.U

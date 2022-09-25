@@ -97,3 +97,27 @@ for i in range (0,len(list1)):
 
 for i in range(2,len(list7)+2):
     ws.cell(row=i,column=11).value=list7[i-2]
+    
+octants=[1,-1,2,-2,3,-3,4,-4]
+pos=[]
+for i in range(0,8):
+    l=[]
+    pos.append(l)
+    
+for x in range(0,len(list7)):
+    if list7[x]==1:
+        pos[0].append(x)
+    elif list7[x]==-1:
+        pos[1].append(x)
+    elif list7[x]==2:
+        pos[2].append(x)
+    elif list7[x]==-2:
+        pos[3].append(x)
+    elif list7[x]==3:
+        pos[4].append(x)
+    elif list7[x]==-3:
+        pos[5].append(x)
+    elif list7[x]==4:
+        pos[6].append(x)
+    elif list7[x]==-4:
+        pos[7].append(x)

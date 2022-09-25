@@ -332,7 +332,172 @@ for x in range(0,p):
         for i in range(0,8):
             ws.cell(row=p+23+13*x,column=14+i).value=list8[i]
             ws.cell(row=p+24+13*x+i,column=13).value=list8[i]
+        a10=b10=c10=d10=e10=f10=g10=h10=0
+        a20=b20=c20=d20=e20=f20=g20=h20=0
+        a30=b30=c30=d30=e30=f30=g30=h30=0
+        a40=b40=c40=d40=e40=f40=g40=h40=0
+        a50=b50=c50=d50=e50=f50=g50=h50=0
+        a60=b60=c60=d60=e60=f60=g60=h60=0
+        a70=b70=c70=d70=e70=f70=g70=h70=0
+        a80=b80=c80=d80=e80=f80=g80=h80=0
 
+        for i in range(0,len(cl[x])-1):
+            if cl[x][i]==1:
+                if cl[x][i+1]==1:
+                    a10+=1
+                elif cl[x][i+1]==-1:
+                    b10+=1
+                elif cl[x][i+1]==2:
+                    c10+=1
+                elif cl[x][i+1]==-2:
+                    d10+=1
+                elif cl[x][i+1]==3:
+                    e10+=1
+                elif cl[x][i+1]==-3:
+                    f10+=1
+                elif cl[x][i+1]==4:
+                    g10+=1
+                elif cl[x][i+1]==-4:
+                    h10+=1
+            if cl[x][i]==-1:
+                if cl[x][i+1]==1:
+                    a20+=1
+                elif cl[x][i+1]==-1:
+                    b20+=1
+                elif cl[x][i+1]==2:
+                    c20+=1
+                elif cl[x][i+1]==-2:
+                    d20+=1
+                elif cl[x][i+1]==3:
+                    e20+=1
+                elif cl[x][i+1]==-3:
+                    f20+=1
+                elif cl[x][i+1]==4:
+                    g20+=1
+                elif cl[x][i+1]==-4:
+                    h20+=1
+            if cl[x][i]==2:
+                if cl[x][i+1]==1:
+                    a30+=1
+                elif cl[x][i+1]==-1:
+                    b30+=1
+                elif cl[x][i+1]==2:
+                    c30+=1
+                elif cl[x][i+1]==-2:
+                    d30+=1
+                elif cl[x][i+1]==3:
+                    e30+=1
+                elif cl[x][i+1]==-3:
+                    f30+=1
+                elif cl[x][i+1]==4:
+                    g30+=1
+                elif cl[x][i+1]==-4:
+                    h30+=1
+            if cl[x][i]==-2:
+                if cl[x][i+1]==1:
+                    a40+=1
+                elif cl[x][i+1]==-1:
+                    b40+=1
+                elif cl[x][i+1]==2:
+                    c40+=1
+                elif cl[x][i+1]==-2:
+                    d40+=1
+                elif cl[x][i+1]==3:
+                    e40+=1
+                elif cl[x][i+1]==-3:
+                    f40+=1
+                elif cl[x][i+1]==4:
+                    g40+=1
+                elif cl[x][i+1]==-4:
+                    h40+=1
+            if cl[x][i]==3:
+                if cl[x][i+1]==1:
+                    a50+=1
+                elif cl[x][i+1]==-1:
+                    b50+=1
+                elif cl[x][i+1]==2:
+                    c50+=1
+                elif cl[x][i+1]==-2:
+                    d50+=1
+                elif cl[x][i+1]==3:
+                    e50+=1
+                elif cl[x][i+1]==-3:
+                    f50+=1
+                elif cl[x][i+1]==4:
+                    g50+=1
+                elif cl[x][i+1]==-4:
+                    h50+=1
+            if cl[x][i]==-3:
+                if cl[x][i+1]==1:
+                    a60+=1
+                elif cl[x][i+1]==-1:
+                    b60+=1
+                elif cl[x][i+1]==2:
+                    c60+=1
+                elif cl[x][i+1]==-2:
+                    d60+=1
+                elif cl[x][i+1]==3:
+                    e60+=1
+                elif cl[x][i+1]==-3:
+                    f60+=1
+                elif cl[x][i+1]==4:
+                    g60+=1
+                elif cl[x][i+1]==-4:
+                    h60+=1
+            if cl[x][i]==4:
+                if cl[x][i+1]==1:
+                    a70+=1
+                elif cl[x][i+1]==-1:
+                    b70+=1
+                elif cl[x][i+1]==2:
+                    c70+=1
+                elif cl[x][i+1]==-2:
+                    d70+=1
+                elif cl[x][i+1]==3:
+                    e70+=1
+                elif cl[x][i+1]==-3:
+                    f70+=1
+                elif cl[x][i+1]==4:
+                    g70+=1
+                elif cl[x][i+1]==-4:
+                    h70+=1
+            if cl[x][i]==-4:
+                if cl[x][i+1]==1:
+                    a80+=1
+                elif cl[x][i+1]==-1:
+                    b80+=1
+                elif cl[x][i+1]==2:
+                    c80+=1
+                elif cl[x][i+1]==-2:
+                    d80+=1
+                elif cl[x][i+1]==3:
+                    e80+=1
+                elif cl[x][i+1]==-3:
+                    f80+=1
+                elif cl[x][i+1]==4:
+                    g80+=1
+                elif cl[x][i+1]==-4:
+                    h80+=1    
+
+        A10=[a10,b10,c10,d10,e10,f10,g10,h10]
+        A20=[a20,b20,c20,d20,e20,f20,g20,h20]
+        A30=[a30,b30,c30,d30,e30,f30,g30,h30]
+        A40=[a40,b40,c40,d40,e40,f40,g40,h40]
+        A50=[a50,b50,c50,d50,e50,f50,g50,h50]
+        A60=[a60,b60,c60,d60,e60,f60,g60,h60]
+        A70=[a70,b70,c70,d70,e70,f70,g70,h70]
+        A80=[a80,b80,c80,d80,e80,f80,g80,h80]
+        for i in range(0,8):
+            ws.cell(row=p+24+13*x,column=14+i).value=A10[i]
+            ws.cell(row=p+25+13*x,column=14+i).value=A20[i]
+            ws.cell(row=p+26+13*x,column=14+i).value=A30[i]
+            ws.cell(row=p+27+13*x,column=14+i).value=A40[i]
+            ws.cell(row=p+28+13*x,column=14+i).value=A50[i]
+            ws.cell(row=p+29+13*x,column=14+i).value=A60[i]
+            ws.cell(row=p+30+13*x,column=14+i).value=A70[i]
+            ws.cell(row=p+31+13*x,column=14+i).value=A80[i]
+            
+wb.save('output.xlsx')
     
 
 

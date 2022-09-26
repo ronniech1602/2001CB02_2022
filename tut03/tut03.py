@@ -122,3 +122,152 @@ for x in range(0,len(list7)):
     elif list7[x]==-4:
         pos[7].append(x)
         
+x1=[]
+sx1=[]
+c1=-1
+for n in pos[0]:
+    if c1+1!=n:           
+        if sx1:              
+            x1.append(sx1)
+            sx1=[]
+    sx1.append(n)
+    c1=n
+if sx1:
+    x1.append(sx1)
+
+v1=[len(x1[i]) for i in range(0,len(x1))]
+y1=max(v1)
+z1=v1.count(max(v1))
+
+x1=[]
+sx1=[]
+c1=-1
+for n in pos[1]:
+    if c1+1!=n:           
+        if sx1:              
+            x1.append(sx1)
+            sx1=[]
+    sx1.append(n)
+    c1=n
+if sx1:
+    x1.append(sx1)
+
+v2=[len(x1[i]) for i in range(0,len(x1))]
+y2=max(v2)
+z2=v2.count(max(v2))
+
+x1=[]
+sx1=[]
+c1=-1
+for n in pos[2]:
+    if c1+1!=n:           
+        if sx1:              
+            x1.append(sx1)
+            sx1=[]
+    sx1.append(n)
+    c1=n
+if sx1:
+    x1.append(sx1)
+
+v3=[len(x1[i]) for i in range(0,len(x1))]
+y3=max(v3)
+z3=v3.count(max(v3))
+
+x1=[]
+sx1=[]
+c1=-1
+for n in pos[3]:
+    if c1+1!=n:           
+        if sx1:              
+            x1.append(sx1)
+            sx1=[]
+    sx1.append(n)
+    c1=n
+if sx1:
+    x1.append(sx1)
+
+v4=[len(x1[i]) for i in range(0,len(x1))]
+y4=max(v4)
+z4=v4.count(max(v4))
+
+x1=[]
+sx1=[]
+c1=-1
+for n in pos[4]:
+    if c1+1!=n:           
+        if sx1:              
+            x1.append(sx1)
+            sx1=[]
+    sx1.append(n)
+    c1=n
+if sx1:
+    x1.append(sx1)
+
+v5=[len(x1[i]) for i in range(0,len(x1))]
+y5=max(v5)
+z5=v5.count(max(v5))
+
+x1=[]
+sx1=[]
+c1=-1
+for n in pos[5]:
+    if c1+1!=n:           
+        if sx1:              
+            x1.append(sx1)
+            sx1=[]
+    sx1.append(n)
+    c1=n
+if sx1:
+    x1.append(sx1)
+
+v6=[len(x1[i]) for i in range(0,len(x1))]
+y6=max(v6)
+z6=v6.count(max(v6))
+
+x1=[]
+sx1=[]
+c1=-1
+for n in pos[6]:
+    if c1+1!=n:           
+        if sx1:              
+            x1.append(sx1)
+            sx1=[]
+    sx1.append(n)
+    c1=n
+if sx1:
+    x1.append(sx1)
+
+v7=[len(x1[i]) for i in range(0,len(x1))]
+y7=max(v7)
+z7=v7.count(max(v7))
+
+x1=[]
+sx1=[]
+c1=-1
+for n in pos[7]:
+    if c1+1!=n:           
+        if sx1:              
+            x1.append(sx1)
+            sx1=[]
+    sx1.append(n)
+    c1=n
+if sx1:
+    x1.append(sx1)
+
+v8=[len(x1[i]) for i in range(0,len(x1))]
+y8=max(v8)
+z8=v8.count(max(v8))
+
+Y=[y1,y2,y3,y4,y5,y6,y7,y8]
+Z=[z1,z2,z3,z4,z5,z6,z7,z8]
+
+ws.cell(row=2,column=13).value="Count"
+ws.cell(row=2,column=14).value="Longest Subsequence Length"
+ws.cell(row=2,column=15).value="Count"
+for i in range(0,8):
+    ws.cell(row=3+i,column=13).value=octants[i]
+    ws.cell(row=3+i,column=14).value=Y[i]
+    ws.cell(row=3+i,column=15).value=Z[i]
+
+wb.save("output.xlsx")
+        

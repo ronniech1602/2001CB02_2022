@@ -133,9 +133,9 @@ for y in range(0,p):
 
 for i in range(0,p): 
     if mod*(i+1)<=len(list1):
-        ws.cell(row=4+i,column=13).value=str(mod*i+1)+"-"+str(mod*(i+1))
+        ws.cell(row=4+i,column=13).value=str(mod*i)+"-"+str(mod*(i+1)-1)
     else:
-        ws.cell(row=4+i,column=13).value=str(mod*i+1)+"-"+str(len(list1))
+        ws.cell(row=4+i,column=13).value=str(mod*i)+"-"+str(len(list1)-1)
     ws.cell(row=4+i,column=14).value=cl[i].count(+1)
     ws.cell(row=4+i,column=15).value=cl[i].count(-1)
     ws.cell(row=4+i,column=16).value=cl[i].count(+2)
@@ -323,9 +323,9 @@ for x in range(0,p):
     if x<p:
         ws.cell(row=p+21+13*x,column=13).value="Mod Transition Count"
         if mod*(x+1)<=len(list1):
-            ws.cell(row=p+22+13*x,column=13).value=str(mod*x+1)+"-"+str(mod*(x+1))
+            ws.cell(row=p+22+13*x,column=13).value=str(mod*x)+"-"+str(mod*(x+1)-1)
         else:
-            ws.cell(row=p+22+13*x,column=13).value=str(mod*x+1)+"-"+str(len(list1))
+            ws.cell(row=p+22+13*x,column=13).value=str(mod*x)+"-"+str(len(list1)-1)
         ws.cell(row=p+22+13*x,column=14).value="To"
         ws.cell(row=p+24+13*x,column=12).value="From"
         ws.cell(row=p+23+13*x,column=13).value="Count"

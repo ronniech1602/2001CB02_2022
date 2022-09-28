@@ -6,10 +6,12 @@ wb=load_workbook("input_octant_transition_identify.xlsx")
 df=pd.read_excel("input_octant_transition_identify.xlsx")
 ws=wb.worksheets[0]
 
+#creating lists to hold values of u,v,w excluding 'u','v','w' using pandas
 list1=df.U
 list2=df.V
 list3=df.W
 
+#calculating the summation of u,v,w values and then dividing by number of elements to get averages
 totalu=0
 for x in range(0,len(list1)):
     totalu=totalu+list1[x]
@@ -28,6 +30,7 @@ for x in range(0,len(list3)):
     
 Wavg=totalw/len(list3)
 
+#forming lists of title and value for averages , and writing them to excel file
 Ua=["Uavg",Uavg]
 Va=["Vavg",Vavg]
 Wa=["Wavg",Wavg]
@@ -40,6 +43,7 @@ for i in range(1,3):
 for i in range(1,3):
     ws.cell(row=i,column=7).value=Wa[i-1]
 
+#list4,list5,list6 to store values of u-uavg , v-vavg , w-wavg as lists
 list4=[]
 for i in list1:
     tmp=i-Uavg
@@ -66,7 +70,8 @@ for i in list3:
 ws.cell(row=1,column=10).value="W'"
 for i in range(2,len(list6)+2):
     ws.cell(row=i,column=10).value=list6[i-2]
-    
+
+#list7 is created to hold the octant value for u',v',w' data, as a list
 ws.cell(row=1,column=11).value="Octants"
 list7=[]
 for i in range (0,len(list1)):
@@ -98,6 +103,7 @@ for i in range (0,len(list1)):
 for i in range(2,len(list7)+2):
     ws.cell(row=i,column=11).value=list7[i-2]
     
+#creating the table for overall counts and adding the overall counts from list7
 ws.cell(row=2,column=13).value="Overall Count"
 ws.cell(row=3,column=12).value="User Input"
 list8=[+1,-1,+2,-2,+3,-3,+4,-4]
@@ -113,24 +119,27 @@ ws.cell(row=2,column=19).value=list7.count(-3)
 ws.cell(row=2,column=20).value=list7.count(+4)
 ws.cell(row=2,column=21).value=list7.count(-4)
 
+#giving value to mod , which can be changed and program will behave accordingly
 mod=5000
 ws.cell(row=3,column=13).value="Mod"+str(mod)
 
+#creating a partition variable p
 mod_ranges=[]
 p=(len(list1)//mod)+1
-cl=[]
+cl=[] #cl holds empty lists based on number of partitions
 for i in range(0,p):
     l=[]
     cl.append(l)
 
 a=0
-
+#the empty lists in cl hold values of octants in the ranges which depend on value of mod or p
 for y in range(0,p):
     for x in range(a,a+mod):
         if x<=len(list1)-1:
             cl[y].append(list7[x])
     a=a+mod
 
+#writing the individual count in the table of variable dimensions , that depend on mod value or p value
 for i in range(0,p): 
     if mod*(i+1)<=len(list1):
         ws.cell(row=4+i,column=13).value=str(mod*i)+"-"+str(mod*(i+1)-1)
@@ -145,6 +154,7 @@ for i in range(0,p):
     ws.cell(row=4+i,column=20).value=cl[i].count(+4)
     ws.cell(row=4+i,column=21).value=cl[i].count(-4)
 
+#creating a table for overall count transition
 ws.cell(row=p+7,column=13).value="Overall Count Transition"
 ws.cell(row=p+8,column=14).value="To"
 ws.cell(row=p+10,column=12).value="From"
@@ -152,7 +162,8 @@ ws.cell(row=p+9,column=13).value="Count"
 for i in range(0,8):
     ws.cell(row=p+9,column=14+i).value=list8[i]
     ws.cell(row=p+10+i,column=13).value=list8[i]
-   
+ 
+#calculating the overall transition count and storing it as lists A1-A8
 a1=b1=c1=d1=e1=f1=g1=h1=0
 a2=b2=c2=d2=e2=f2=g2=h2=0
 a3=b3=c3=d3=e3=f3=g3=h3=0
@@ -309,6 +320,7 @@ A6=[a6,b6,c6,d6,e6,f6,g6,h6]
 A7=[a7,b7,c7,d7,e7,f7,g7,h7]
 A8=[a8,b8,c8,d8,e8,f8,g8,h8]
 
+#writing the overall transition count values to excel
 for i in range(0,8):
     ws.cell(row=p+10,column=14+i).value=A1[i]
     ws.cell(row=p+11,column=14+i).value=A2[i]
@@ -319,6 +331,7 @@ for i in range(0,8):
     ws.cell(row=p+16,column=14+i).value=A7[i]
     ws.cell(row=p+17,column=14+i).value=A8[i]
 
+#calculating the mod transition count (individual transition count) and storing the values as lists A10-A80
 for x in range(0,p):
     if x<p:
         ws.cell(row=p+21+13*x,column=13).value="Mod Transition Count"
@@ -487,6 +500,8 @@ for x in range(0,p):
         A60=[a60,b60,c60,d60,e60,f60,g60,h60]
         A70=[a70,b70,c70,d70,e70,f70,g70,h70]
         A80=[a80,b80,c80,d80,e80,f80,g80,h80]
+        
+        #writing the individual transitions counts to excel
         for i in range(0,8):
             ws.cell(row=p+24+13*x,column=14+i).value=A10[i]
             ws.cell(row=p+25+13*x,column=14+i).value=A20[i]
@@ -497,7 +512,8 @@ for x in range(0,p):
             ws.cell(row=p+30+13*x,column=14+i).value=A70[i]
             ws.cell(row=p+31+13*x,column=14+i).value=A80[i]
             
-wb.save('output.xlsx')
+wb.save('output_octant_transition_identify.xlsx') #saving the output file
     
+#program completed ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)
 
 

@@ -336,7 +336,7 @@ for x in range(0,p):
     if x<p:
         ws.cell(row=p+21+13*x,column=13).value="Mod Transition Count"
         if mod*(x+1)<=len(list1):
-            ws.cell(row=p+22+13*x,column=13).value=str(mod*x)+"-"+str(mod*(x+1)-1)
+            ws.cell(row=p+22+13*x,column=13).value=str(mod*x)+"-"+str(mod*(x+1)-1)+" considering transition for last element"
         else:
             ws.cell(row=p+22+13*x,column=13).value=str(mod*x)+"-"+str(len(list1)-1)
         ws.cell(row=p+22+13*x,column=14).value="To"
@@ -490,7 +490,137 @@ for x in range(0,p):
                 elif cl[x][i+1]==4:
                     g80+=1
                 elif cl[x][i+1]==-4:
-                    h80+=1    
+                    h80+=1
+        #caution for transitions in between the partitions
+        if x<p-1:
+            if cl[x][-1]==1 and cl[x+1][0]==1:
+                a10+=1
+            if cl[x][-1]==1 and cl[x+1][0]==-1:
+                b10+=1
+            if cl[x][-1]==1 and cl[x+1][0]==2:
+                c10+=1
+            if cl[x][-1]==1 and cl[x+1][0]==-2:
+                d10+=1
+            if cl[x][-1]==1 and cl[x+1][0]==3:
+                e10+=1
+            if cl[x][-1]==1 and cl[x+1][0]==-3:
+                f10+=1
+            if cl[x][-1]==1 and cl[x+1][0]==4:
+                g10+=1
+            if cl[x][-1]==1 and cl[x+1][0]==-4:
+                h10+=1
+            if cl[x][-1]==-1 and cl[x+1][0]==1:
+                a20+=1
+            if cl[x][-1]==-1 and cl[x+1][0]==-1:
+                b20+=1
+            if cl[x][-1]==-1 and cl[x+1][0]==2:
+                c20+=1
+            if cl[x][-1]==-1 and cl[x+1][0]==-2:
+                d20+=1
+            if cl[x][-1]==-1 and cl[x+1][0]==3:
+                e20+=1
+            if cl[x][-1]==-1 and cl[x+1][0]==-3:
+                f20+=1
+            if cl[x][-1]==-1 and cl[x+1][0]==4:
+                g20+=1
+            if cl[x][-1]==-1 and cl[x+1][0]==-4:
+                h20+=1
+            if cl[x][-1]==2 and cl[x+1][0]==1:
+                a30+=1
+            if cl[x][-1]==2 and cl[x+1][0]==-1:
+                b30+=1
+            if cl[x][-1]==2 and cl[x+1][0]==2:
+                c30+=1
+            if cl[x][-1]==2 and cl[x+1][0]==-2:
+                d30+=1
+            if cl[x][-1]==2 and cl[x+1][0]==3:
+                e30+=1
+            if cl[x][-1]==2 and cl[x+1][0]==-3:
+                f30+=1
+            if cl[x][-1]==2 and cl[x+1][0]==4:
+                g30+=1
+            if cl[x][-1]==2 and cl[x+1][0]==-4:
+                h30+=1
+            if cl[x][-1]==-2 and cl[x+1][0]==1:
+                a40+=1
+            if cl[x][-1]==-2 and cl[x+1][0]==-1:
+                b40+=1
+            if cl[x][-1]==-2 and cl[x+1][0]==2:
+                c40+=1
+            if cl[x][-1]==-2 and cl[x+1][0]==-2:
+                d40+=1
+            if cl[x][-1]==-2 and cl[x+1][0]==3:
+                e40+=1
+            if cl[x][-1]==-2 and cl[x+1][0]==-3:
+                f40+=1
+            if cl[x][-1]==-2 and cl[x+1][0]==4:
+                g40+=1
+            if cl[x][-1]==-2 and cl[x+1][0]==-4:
+                h40+=1
+            if cl[x][-1]==3 and cl[x+1][0]==1:
+                a50+=1
+            if cl[x][-1]==3 and cl[x+1][0]==-1:
+                b50+=1
+            if cl[x][-1]==3 and cl[x+1][0]==2:
+                c50+=1
+            if cl[x][-1]==3 and cl[x+1][0]==-2:
+                d50+=1
+            if cl[x][-1]==3 and cl[x+1][0]==3:
+                e50+=1
+            if cl[x][-1]==3 and cl[x+1][0]==-3:
+                f50+=1
+            if cl[x][-1]==3 and cl[x+1][0]==4:
+                g50+=1
+            if cl[x][-1]==3 and cl[x+1][0]==-4:
+                h50+=1
+            if cl[x][-1]==-3 and cl[x+1][0]==1:
+                a60+=1
+            if cl[x][-1]==-3 and cl[x+1][0]==-1:
+                b60+=1
+            if cl[x][-1]==-3 and cl[x+1][0]==2:
+                c60+=1
+            if cl[x][-1]==-3 and cl[x+1][0]==-2:
+                d60+=1
+            if cl[x][-1]==-3 and cl[x+1][0]==3:
+                e60+=1
+            if cl[x][-1]==-3 and cl[x+1][0]==-3:
+                f60+=1
+            if cl[x][-1]==-3 and cl[x+1][0]==4:
+                g60+=1
+            if cl[x][-1]==-3 and cl[x+1][0]==-4:
+                h60+=1
+            if cl[x][-1]==4 and cl[x+1][0]==1:
+                a70+=1
+            if cl[x][-1]==4 and cl[x+1][0]==-1:
+                b70+=1
+            if cl[x][-1]==4 and cl[x+1][0]==2:
+                c70+=1
+            if cl[x][-1]==4 and cl[x+1][0]==-2:
+                d70+=1
+            if cl[x][-1]==4 and cl[x+1][0]==3:
+                e70+=1
+            if cl[x][-1]==4 and cl[x+1][0]==-3:
+                f70+=1
+            if cl[x][-1]==4 and cl[x+1][0]==4:
+                g70+=1
+            if cl[x][-1]==4 and cl[x+1][0]==-4:
+                h70+=1 
+            if cl[x][-1]==-4 and cl[x+1][0]==1:
+                a80+=1
+            if cl[x][-1]==-4 and cl[x+1][0]==-1:
+                b80+=1
+            if cl[x][-1]==-4 and cl[x+1][0]==2:
+                c80+=1
+            if cl[x][-1]==-4 and cl[x+1][0]==-2:
+                d80+=1
+            if cl[x][-1]==-4 and cl[x+1][0]==3:
+                e80+=1
+            if cl[x][-1]==-4 and cl[x+1][0]==-3:
+                f80+=1
+            if cl[x][-1]==-4 and cl[x+1][0]==4:
+                g80+=1
+            if cl[x][-1]==-4 and cl[x+1][0]==-4:
+                h80+=1
 
         A10=[a10,b10,c10,d10,e10,f10,g10,h10]
         A20=[a20,b20,c20,d20,e20,f20,g20,h20]

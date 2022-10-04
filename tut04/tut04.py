@@ -146,122 +146,122 @@ v1=[len(x1[i]) for i in range(0,len(x1))] #v1 contains lengths of lists formed i
 y1=max(v1) #longest list length in x1 , which is the longest length for which the corresponding octant appears in list7
 z1=v1.count(max(v1)) #count of longest list length in x1
 
-x1=[]
-sx1=[]
-c1=-1
+x2=[]
+sx2=[]
+c2=-1
 for n in pos[1]:
-    if c1+1!=n:           
-        if sx1:              
-            x1.append(sx1)
-            sx1=[]
-    sx1.append(n)
-    c1=n
-if sx1:
-    x1.append(sx1)
+    if c2+1!=n:           
+        if sx2:              
+            x2.append(sx2)
+            sx2=[]
+    sx2.append(n)
+    c2=n
+if sx2:
+    x2.append(sx2)
 
-v2=[len(x1[i]) for i in range(0,len(x1))]
+v2=[len(x2[i]) for i in range(0,len(x2))]
 y2=max(v2)
 z2=v2.count(max(v2))
 
-x1=[]
-sx1=[]
-c1=-1
+x3=[]
+sx3=[]
+c3=-1
 for n in pos[2]:
-    if c1+1!=n:           
-        if sx1:              
-            x1.append(sx1)
-            sx1=[]
-    sx1.append(n)
-    c1=n
-if sx1:
-    x1.append(sx1)
+    if c3+1!=n:           
+        if sx3:              
+            x3.append(sx3)
+            sx3=[]
+    sx3.append(n)
+    c3=n
+if sx3:
+    x3.append(sx3)
 
-v3=[len(x1[i]) for i in range(0,len(x1))]
+v3=[len(x3[i]) for i in range(0,len(x3))]
 y3=max(v3)
 z3=v3.count(max(v3))
 
-x1=[]
-sx1=[]
-c1=-1
+x4=[]
+sx4=[]
+c4=-1
 for n in pos[3]:
-    if c1+1!=n:           
-        if sx1:              
-            x1.append(sx1)
-            sx1=[]
-    sx1.append(n)
-    c1=n
-if sx1:
-    x1.append(sx1)
+    if c4+1!=n:           
+        if sx4:              
+            x4.append(sx4)
+            sx4=[]
+    sx4.append(n)
+    c4=n
+if sx4:
+    x4.append(sx4)
 
-v4=[len(x1[i]) for i in range(0,len(x1))]
+v4=[len(x4[i]) for i in range(0,len(x4))]
 y4=max(v4)
 z4=v4.count(max(v4))
 
-x1=[]
-sx1=[]
-c1=-1
+x5=[]
+sx5=[]
+c5=-1
 for n in pos[4]:
-    if c1+1!=n:           
-        if sx1:              
-            x1.append(sx1)
-            sx1=[]
-    sx1.append(n)
-    c1=n
-if sx1:
-    x1.append(sx1)
+    if c5+1!=n:           
+        if sx5:              
+            x5.append(sx5)
+            sx5=[]
+    sx5.append(n)
+    c5=n
+if sx5:
+    x5.append(sx5)
 
-v5=[len(x1[i]) for i in range(0,len(x1))]
+v5=[len(x5[i]) for i in range(0,len(x5))]
 y5=max(v5)
 z5=v5.count(max(v5))
 
-x1=[]
-sx1=[]
-c1=-1
+x6=[]
+sx6=[]
+c6=-1
 for n in pos[5]:
-    if c1+1!=n:           
-        if sx1:              
-            x1.append(sx1)
-            sx1=[]
-    sx1.append(n)
-    c1=n
-if sx1:
-    x1.append(sx1)
+    if c6+1!=n:           
+        if sx6:              
+            x6.append(sx6)
+            sx6=[]
+    sx6.append(n)
+    c6=n
+if sx6:
+    x6.append(sx6)
 
-v6=[len(x1[i]) for i in range(0,len(x1))]
+v6=[len(x6[i]) for i in range(0,len(x6))]
 y6=max(v6)
 z6=v6.count(max(v6))
 
-x1=[]
-sx1=[]
-c1=-1
+x7=[]
+sx7=[]
+c7=-1
 for n in pos[6]:
-    if c1+1!=n:           
-        if sx1:              
-            x1.append(sx1)
-            sx1=[]
-    sx1.append(n)
-    c1=n
-if sx1:
-    x1.append(sx1)
+    if c7+1!=n:           
+        if sx7:              
+            x7.append(sx7)
+            sx7=[]
+    sx7.append(n)
+    c7=n
+if sx7:
+    x7.append(sx7)
 
-v7=[len(x1[i]) for i in range(0,len(x1))]
+v7=[len(x7[i]) for i in range(0,len(x7))]
 y7=max(v7)
 z7=v7.count(max(v7))
 
-x1=[]
-sx1=[]
-c1=-1
+x8=[]
+sx8=[]
+c8=-1
 for n in pos[7]:
-    if c1+1!=n:           
-        if sx1:              
-            x1.append(sx1)
-            sx1=[]
-    sx1.append(n)
-    c1=n
-if sx1:
-    x1.append(sx1)
+    if c8+1!=n:           
+        if sx8:              
+            x1.append(sx8)
+            sx8=[]
+    sx8.append(n)
+    c8=n
+if sx8:
+    x8.append(sx8)
 
-v8=[len(x1[i]) for i in range(0,len(x1))]
+v8=[len(x8[i]) for i in range(0,len(x8))]
 y8=max(v8)
 z8=v8.count(max(v8))
 
@@ -277,3 +277,19 @@ for i in range(0,8):
     ws.cell(row=3+i,column=13).value=octants[i]
     ws.cell(row=3+i,column=14).value=Y[i]
     ws.cell(row=3+i,column=15).value=Z[i]
+    
+listT=df.Time 
+ws.cell(row=2,column=17).value="Count"
+ws.cell(row=2,column=18).value="Longest Subsequence Length"
+ws.cell(row=2,column=19).value="Count"
+o=0
+for i in range(0,8):
+    ws.cell(row=3+i+o,column=17).value=octants[i]
+    ws.cell(row=3+i+o,column=18).value=Y[i]
+    ws.cell(row=3+i+o,column=19).value=Z[i]
+    ws.cell(row=4+i+o,column=17).value="Time"
+    ws.cell(row=4+i+o,column=18).value="From"
+    ws.cell(row=4+i+o,column=19).value="To"
+    o=o+Z[i]+1
+    
+wb.save("a.xlsx")

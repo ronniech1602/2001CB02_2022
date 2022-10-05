@@ -279,4 +279,6 @@ for i in range(0,8):
     ws.cell(row=3+i,column=15).value=Z[i]
 
 wb.save("output_octant_longest_subsequence.xlsx")
+
+#program completed ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)
         

@@ -277,11 +277,13 @@ for i in range(0,8):
     ws.cell(row=3+i,column=13).value=octants[i]
     ws.cell(row=3+i,column=14).value=Y[i]
     ws.cell(row=3+i,column=15).value=Z[i]
-    
+
+#creating a list of time values using pandas and writing the header of skeleton    
 listT=df.Time 
 ws.cell(row=2,column=17).value="Count"
 ws.cell(row=2,column=18).value="Longest Subsequence Length"
 ws.cell(row=2,column=19).value="Count"
+#creating the skeleton for mentioning time ranges with counts of longest subsequences
 o=0
 for i in range(0,8):
     ws.cell(row=3+i+o,column=17).value=octants[i]
@@ -291,7 +293,8 @@ for i in range(0,8):
     ws.cell(row=4+i+o,column=18).value="From"
     ws.cell(row=4+i+o,column=19).value="To"
     o=o+Z[i]+1
-    
+
+#creating lists to hold the longest subsequence indices of each octant    
 x_1=[]    
 for x in x1:
     if len(x)==y1:
@@ -325,6 +328,7 @@ for x in x8:
     if len(x)==y8:
         x_8.append(x)
 
+#writing the values of time ranges to excel using the above created lists x_1 to x_8
 X=[x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8]
 o=0        
 for i in range(0,8):
@@ -334,3 +338,5 @@ for i in range(0,8):
     o=o+Z[i]+1
     
 wb.save("output_octant_longest_subsequence_with_range.xlsx")
+
+#program completed ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)

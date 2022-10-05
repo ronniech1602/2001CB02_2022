@@ -292,4 +292,45 @@ for i in range(0,8):
     ws.cell(row=4+i+o,column=19).value="To"
     o=o+Z[i]+1
     
-wb.save("a.xlsx")
+x_1=[]    
+for x in x1:
+    if len(x)==y1:
+        x_1.append(x)
+x_2=[]    
+for x in x2:
+    if len(x)==y2:
+        x_2.append(x)
+x_3=[]    
+for x in x3:
+    if len(x)==y3:
+        x_3.append(x)
+x_4=[]    
+for x in x4:
+    if len(x)==y4:
+        x_4.append(x)
+x_5=[]    
+for x in x5:
+    if len(x)==y5:
+        x_5.append(x)
+x_6=[]    
+for x in x6:
+    if len(x)==y6:
+        x_6.append(x)
+x_7=[]    
+for x in x7:
+    if len(x)==y7:
+        x_7.append(x)
+x_8=[]    
+for x in x8:
+    if len(x)==y8:
+        x_8.append(x)
+
+X=[x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8]
+o=0        
+for i in range(0,8):
+    for n in range(0,Z[i]):
+        ws.cell(row=5+i+o+n,column=18).value=listT[X[i][n][0]]
+        ws.cell(row=5+i+o+n,column=19).value=listT[X[i][n][-1]]
+    o=o+Z[i]+1
+    
+wb.save("output_octant_longest_subsequence_with_range.xlsx")

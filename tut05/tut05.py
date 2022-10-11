@@ -190,3 +190,28 @@ for i in range(0,p):
         dic_tmp[list8[j]]=cp[i][j]
     dic_tmp={k:v for k, v in sorted(dic_tmp.items(), key=lambda item: item[1])}
     list9.append(dic_tmp)
+    
+list10=[]
+for i in range(0,p):
+    list11=[]
+    list11=list(list9[i].items())
+    list10.append(list11)
+    
+for i in range(0,p):
+    for j in range(0,8):
+        if list10[i][j][0]==1:
+            ws.cell(row=4+i,column=22).value=8-j
+        if list10[i][j][0]==-1:
+            ws.cell(row=4+i,column=23).value=8-j
+        if list10[i][j][0]==2:
+            ws.cell(row=4+i,column=24).value=8-j
+        if list10[i][j][0]==-2:
+            ws.cell(row=4+i,column=25).value=8-j
+        if list10[i][j][0]==3:
+            ws.cell(row=4+i,column=26).value=8-j
+        if list10[i][j][0]==-3:
+            ws.cell(row=4+i,column=27).value=8-j    
+        if list10[i][j][0]==4:
+            ws.cell(row=4+i,column=28).value=8-j    
+        if list10[i][j][0]==-4:
+            ws.cell(row=4+i,column=29).value=8-j

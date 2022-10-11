@@ -182,4 +182,11 @@ for i in range(0,8):
     ws.cell(row=9+p+i,column=14).value=list8[i]
     ws.cell(row=9+p+i,column=15).value=octant_names[i]
     
-wb.save("a.xlsx")
+list9=[]    
+dic1={}
+for i in range(0,p):
+    dic_tmp={}
+    for j in range(0,8):
+        dic_tmp[list8[j]]=cp[i][j]
+    dic_tmp={k:v for k, v in sorted(dic_tmp.items(), key=lambda item: item[1])}
+    list9.append(dic_tmp)

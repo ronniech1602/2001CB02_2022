@@ -215,3 +215,15 @@ for i in range(0,p):
             ws.cell(row=4+i,column=28).value=8-j    
         if list10[i][j][0]==-4:
             ws.cell(row=4+i,column=29).value=8-j
+            
+dic_on={1:"Internal outward interaction",-1:"External Outward Interaction",2:"External Ejection",-2:"Internal Ejection",3:"External Inward Interaction",-3:"Internal Inward Interaction",4:"Internal Sweep",-4:"External Sweep"}
+list12=[]
+for i in range(0,p):
+    ws.cell(row=4+i,column=30).value=list10[i][-1][0]
+    ws.cell(row=4+i,column=31).value=dic_on[list10[i][-1][0]]
+    list12.append(list10[i][-1][0])
+
+for i in range(0,8):
+        ws.cell(row=9+i+p,column=16).value=list12.count(list8[i])
+        
+wb.save("octant_output_ranking_excel.xlsx")

@@ -143,6 +143,7 @@ for y in range(0,p):
     a=a+mod
 
 #writing the individual count in the table of variable dimensions , that depend on mod value or p value
+#Created a nested list cp in which each list contains the counts of octants in mod ranges
 for i in range(0,p): 
     if mod*(i+1)<=len(list1):
         ws.cell(row=4+i,column=13).value=str(mod*i)+"-"+str(mod*(i+1)-1)
@@ -166,10 +167,12 @@ for i in range(0,p):
     cp[i].append(cl[i].count(-4))
     
 
+#defining 3 lists to write in excel as a for loop
 rank_title=["Rank Octant 1","Rank Octant -1","Rank Octant 2","Rank Octant -2","Rank Octant 3","Rank Octant -3","Rank Octant 4","Rank Octant -4"]
 rank_title2=["Rank 1 Octant ID","Rank 1 Octant Name"]
 octant_names=["Internal outward interaction","External Outward Interaction","External Ejection","Internal Ejection","External Inward Interaction","Internal Inward Interaction","Internal Sweep","External Sweep"]
 
+#creating the skeleton in excel 
 for i in range(0,2):
     ws.cell(row=2,column=30+i).value=rank_title2[i]
 for i in range(0,8):
@@ -181,22 +184,27 @@ ws.cell(row=8+p,column=16).value="Count Of Rank 1 Mod Values"
 for i in range(0,8):
     ws.cell(row=9+p+i,column=14).value=list8[i]
     ws.cell(row=9+p+i,column=15).value=octant_names[i]
-    
+
+#list9 created to hold multiple dictionaries holding the key as octant and vale as count for each mod range    
 list9=[]    
 dic1={}
 for i in range(0,p):
     dic_tmp={}
     for j in range(0,8):
         dic_tmp[list8[j]]=cp[i][j]
-    dic_tmp={k:v for k, v in sorted(dic_tmp.items(), key=lambda item: item[1])}
+    dic_tmp={k:v for k, v in sorted(dic_tmp.items(), key=lambda item: item[1])} # sorting the dictionary based on values
     list9.append(dic_tmp)
-    
+
+#sorting the values automatically ranks the data in descending order (8 to 1)     
+#list11 is a temporary list ; each time it runs and stores the sorted dictionary data as tuples of pairs of octants and counts 
+#list10 contains all the temporary lists made by list11
 list10=[]
 for i in range(0,p):
     list11=[]
     list11=list(list9[i].items())
     list10.append(list11)
     
+#writing the ranks in the excel file
 for i in range(0,p):
     for j in range(0,8):
         if list10[i][j][0]==1:
@@ -216,14 +224,20 @@ for i in range(0,p):
         if list10[i][j][0]==-4:
             ws.cell(row=4+i,column=29).value=8-j
             
+#mapping octant id with octant names
 dic_on={1:"Internal outward interaction",-1:"External Outward Interaction",2:"External Ejection",-2:"Internal Ejection",3:"External Inward Interaction",-3:"Internal Inward Interaction",4:"Internal Sweep",-4:"External Sweep"}
+#list12 will contain the octants ids which got rank 1 in all the ranges
 list12=[]
+#writing the octant id and name for the octant which got rank1 in all the ranges ; also appending the ids to list12
 for i in range(0,p):
     ws.cell(row=4+i,column=30).value=list10[i][-1][0]
     ws.cell(row=4+i,column=31).value=dic_on[list10[i][-1][0]]
     list12.append(list10[i][-1][0])
 
+#writing the count of octants with rank 1 from list12
 for i in range(0,8):
         ws.cell(row=9+i+p,column=16).value=list12.count(list8[i])
         
 wb.save("octant_output_ranking_excel.xlsx")
+
+#program completed ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)

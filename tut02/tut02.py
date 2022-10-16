@@ -125,7 +125,11 @@ ws.cell(row=3,column=13).value="Mod"+str(mod)
 
 #creating a partition variable p
 mod_ranges=[]
-p=(len(list1)//mod)+1
+if len(list1)%mod!=0:
+    p=(len(list1)//mod)+1
+else:
+    p=(len(list1)//mod)
+
 cl=[] #cl holds empty lists based on number of partitions
 for i in range(0,p):
     l=[]
@@ -646,4 +650,4 @@ wb.save('output_octant_transition_identify.xlsx') #saving the output file
     
 #program completed ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)
 #Some error occured while pushing the final program to git , so i am repushing the identical code again
-
+#just made a slight improvement to how i defined the partition function

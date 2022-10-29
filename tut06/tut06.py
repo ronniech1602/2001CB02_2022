@@ -68,6 +68,9 @@ for i in range(0,len(roll_no)):
     c=Total_lec_taken-Actual_attendance[i]
     Absent_count.append(c)
     
+import os
+os.mkdir('Output')
+    
 import csv
 for i in range(0,len(roll_no)):
     with open('Output/{}.csv'.format(str(roll_no[i])),'w',newline='') as f:

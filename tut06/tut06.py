@@ -73,7 +73,19 @@ for i in range(0,len(roll_no)):
     with open('Output/{}.csv'.format(str(roll_no[i])),'w',newline='') as f:
         writer=csv.writer(f)
         writer.writerow(['Roll_No','Name','Total_lecture_taken','Attendance_count_actual','Attendance_count_fake','Attendance_count_absent','Percentage'])
-        writer.writerow([roll_no[i],name[i],Total_lec_taken,Actual_attendance[i],Fake_attendance[i],Absent_count[i],Actual_attendance[i]*100/Total_lec_taken])
+        writer.writerow([roll_no[i],name[i],Total_lec_taken,Actual_attendance[i],Fake_attendance[i],Absent_count[i],'{0:.2f}'.format(Actual_attendance[i]*100/Total_lec_taken)])
+
+con=[]
+for i in range(0,len(roll_no)):
+    l=[]
+    l=[roll_no[i],name[i],Total_lec_taken,Actual_attendance[i],Fake_attendance[i],'{0:.2f}'.format(Actual_attendance[i]*100/Total_lec_taken)]
+    con.append(l)
+    
+with open('Output/Attendance_report_consolidated.csv','w',newline='') as g:
+    writer=csv.writer(g)
+    writer.writerow(['Roll_No','Name','Total_lecture_taken','Attendance_count_actual','Attendance_count_fake','Attendance_count_absent','Percentage'])
+    for i in range(0,len(roll_no)):
+        writer.writerow(con[i])
 
 #This shall be the last lines of the code.
 end_time = datetime.now()

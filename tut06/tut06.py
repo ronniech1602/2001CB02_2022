@@ -53,6 +53,20 @@ for i in range(0,len(roll_no)):
                 b+=1
     Actual_attendance.append(a)
     Fake_attendance.append(b)
+    
+lec_date_data=[]
+for i in range(0,len(attendance_roll)):
+    if timestamp[i].isoweekday()==1 or timestamp[i].isoweekday()==4:
+        lec_date_data.append(timestamp[i].date())
+
+lec_taken=set(lec_date_data)
+Total_lec_taken=len(lec_taken)
+
+Absent_count=[]
+for i in range(0,len(roll_no)):
+    c=0
+    c=Total_lec_taken-Actual_attendance[i]
+    Absent_count.append(c)
 
 #This shall be the last lines of the code.
 end_time = datetime.now()

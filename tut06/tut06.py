@@ -67,6 +67,13 @@ for i in range(0,len(roll_no)):
     c=0
     c=Total_lec_taken-Actual_attendance[i]
     Absent_count.append(c)
+    
+import csv
+for i in range(0,len(roll_no)):
+    with open('Output/{}.csv'.format(str(roll_no[i])),'w',newline='') as f:
+        writer=csv.writer(f)
+        writer.writerow(['Roll_No','Name','Total_lecture_taken','Attendance_count_actual','Attendance_count_fake','Attendance_count_absent','Percentage'])
+        writer.writerow([roll_no[i],name[i],Total_lec_taken,Actual_attendance[i],Fake_attendance[i],Absent_count[i],Actual_attendance[i]*100/Total_lec_taken])
 
 #This shall be the last lines of the code.
 end_time = datetime.now()

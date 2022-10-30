@@ -64,7 +64,10 @@ for i in range(0,len(roll_no)):
 lec_date_data=[]
 for i in range(0,len(attendance_roll)):
     if timestamp[i].isoweekday()==1 or timestamp[i].isoweekday()==4:
-        lec_date_data.append(timestamp[i].date())
+        if timestamp[i].date()==2022-8-15 or timestamp[i].date()==2022-10-24:
+            pass
+        else:
+            lec_date_data.append(timestamp[i].date())
 
 lec_taken=set(lec_date_data)
 Total_lec_taken=len(lec_taken)
@@ -78,7 +81,10 @@ for i in range(0,len(roll_no)):
 
 #creating a folder 'output' to hold all the output files    
 import os
-os.mkdir('Output')
+path='Output'
+exist=os.path.exists(path)
+if not exist:
+    os.mkdir('Output')
 
 #writing to individual csv files    
 import csv
@@ -107,3 +113,4 @@ end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
 
 #program completed to my best capacity ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)
+#some modifications with considering the holidays to not be a part of total lectures taken

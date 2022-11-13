@@ -1,0 +1,58 @@
+Pakistan Batting
+Total score : 146-10
+Player                   Runs Scored    Balls Faced    4s        6s        
+Babar Azam(c)            10             9              2         0         
+Mohammad Rizwan(w)       43             42             4         1         
+Fakhar Zaman             10             6              2         0         
+Iftikhar Ahmed           28             21             2         1         
+Khushdil Shah            2              7              0         0         
+Asif Ali                 9              7              0         0         
+Shadab Khan              10             9              1         0         
+Mohammad Nawaz           1              3              0         0         
+Naseem Shah              0              1              0         0         
+Haris Rauf               13             7              2         0         
+Shahnawaz Dahani         16             6              0         2         
+
+Indian bowling
+Player                   Runs conceeded Wickets        Balls bowled   4s hit    6 hit     
+Rohit Sharma(c)          0              0              0              0         0         
+KL Rahul                 0              0              0              0         0         
+Virat Kohli              0              0              0              0         0         
+Suryakumar Yadav         0              0              0              0         0         
+Dinesh Karthik(w)        0              0              0              0         0         
+Hardik Pandya            25             3              24             2         0         
+Ravindra Jadeja          11             0              11             1         0         
+Bhuvneshwar Kumar        26             4              24             3         1         
+Avesh Khan               19             1              12             2         1         
+Yuzvendra Chahal         32             0              24             1         1         
+Arshdeep Singh           33             2              23             4         1         
+
+
+Indian Batting
+Total score : 137-5
+Player                   Runs Scored    Balls Faced    4s        6s        
+Rohit Sharma(c)          12             17             0         1         
+KL Rahul                 0              1              0         0         
+Virat Kohli              35             34             3         1         
+Suryakumar Yadav         18             18             1         0         
+Dinesh Karthik(w)        1              1              0         0         
+Hardik Pandya            27             16             4         0         
+Ravindra Jadeja          35             28             2         2         
+Bhuvneshwar Kumar        0              0              0         0         
+Avesh Khan               0              0              0         0         
+Yuzvendra Chahal         0              0              0         0         
+Arshdeep Singh           0              0              0         0         
+
+Pakistan bowling
+Player                   Runs conceeded Wickets        Balls bowled   4s hit    6 hit     
+Babar Azam(c)            0              0              0              0         0         
+Mohammad Rizwan(w)       0              0              0              0         0         
+Fakhar Zaman             0              0              0              0         0         
+Iftikhar Ahmed           0              0              0              0         0         
+Khushdil Shah            0              0              0              0         0         
+Asif Ali                 0              0              0              0         0         
+Shadab Khan              19             0              24             1         0         
+Mohammad Nawaz           27             3              21             1         2         
+Naseem Shah              27             2              24             2         1         
+Haris Rauf               35             0              22             4         1         
+Shahnawaz Dahani         29             0              24             2         0         

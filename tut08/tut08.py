@@ -190,13 +190,13 @@ for i in tmp2:
 runf2=[]
 runs2=[]
 for i in datax2:
-    c=i.split(" ",maxsplit=2)
-    if len(c)==1:
-        runf2.append(c[0])
+    p=i.split(" ",maxsplit=2)
+    if len(p)==1:
+        runf2.append(p[0])
         runs2.append(" ")
-    if len(c)>1:
-        runf2.append(c[0])
-        runs2.append(c[1])
+    if len(p)>1:
+        runf2.append(p[0])
+        runs2.append(p[1])
         
 c2=[]
 for i in ind_team.keys():
@@ -309,6 +309,44 @@ for i in pak_team.keys():
                     pass
     d2=[c_0,c_1,c_2,c_3,c_4,c_5,c_6,c_wic,c_wide,c_bye,c_lb,c_nb]
     cc2.append(d2)
+
+def totalscore(x):
+    y=0
+    for i in x:
+        y=y+i[1]+i[2]*2+i[3]*3+i[4]*4+i[5]*5+i[6]*6+i[8]+i[9]+i[10]+i[11]
+    return(y)
+
+def wickets(z):
+    y2=0
+    for i in z:
+        y2=y2+i[7]
+    return(y2) 
+
+pak_list=list(pak_team.keys())
+ind_list=list(ind_team.keys())
+with open('scorecard.txt','w') as op:
+    print('Pakistan Batting',file=op)
+    print("Total score : "+str(totalscore(c))+'-'+str(wickets(c)),file=op)
+    print(f"{'Player':<25}{'Runs Scored':<15}{'Balls Faced':<15}{'4s':<10}{'6s':<10}",file=op)
+    for i in range(0,len(pak_team)):
+        print(f"{pak_list[i]:<25}{str(c[i][1]+c[i][2]*2+c[i][3]*3+c[i][4]*4+c[i][5]*5+c[i][6]*6):<15}{str(c[i][0]+c[i][1]+c[i][2]+c[i][3]+c[i][4]+c[i][5]+c[i][6]+c[i][7]):<15}{str(c[i][4]):<10}{str(c[i][6]):<10}",file=op)
+    print("",file=op)
+    print("Indian bowling",file=op)
+    print(f"{'Player':<25}{'Runs conceeded':<15}{'Wickets':<15}{'Balls bowled':<15}{'4s hit':<10}{'6 hit':<10}",file=op)
+    for i in range(0,len(ind_team)):
+        print(f"{ind_list[i]:<25}{str(cc[i][1]+cc[i][2]*2+cc[i][3]*3+cc[i][4]*4+cc[i][5]*5+cc[i][6]*6+cc[i][8]+cc[i][9]+cc[i][10]+cc[i][11]):<15}{str(cc[i][7]):<15}{str(cc[i][0]+cc[i][1]+cc[i][2]+cc[i][3]+cc[i][4]+cc[i][5]+cc[i][6]+cc[i][7]+cc[i][9]+cc[i][10]):<15}{str(cc[i][4]):<10}{str(cc[i][6]):<10}",file=op)
+    print('',file=op)
+    print('',file=op)
+    print('Indian Batting',file=op)
+    print("Total score : "+str(totalscore(c2))+'-'+str(wickets(c2)),file=op)
+    print(f"{'Player':<25}{'Runs Scored':<15}{'Balls Faced':<15}{'4s':<10}{'6s':<10}",file=op)
+    for i in range(0,len(ind_team)):
+        print(f"{ind_list[i]:<25}{str(c2[i][1]+c2[i][2]*2+c2[i][3]*3+c2[i][4]*4+c2[i][5]*5+c2[i][6]*6):<15}{str(c2[i][0]+c2[i][1]+c2[i][2]+c2[i][3]+c2[i][4]+c2[i][5]+c2[i][6]+c2[i][7]):<15}{str(c2[i][4]):<10}{str(c2[i][6]):<10}",file=op)
+    print("",file=op)
+    print("Pakistan bowling",file=op)
+    print(f"{'Player':<25}{'Runs conceeded':<15}{'Wickets':<15}{'Balls bowled':<15}{'4s hit':<10}{'6 hit':<10}",file=op)
+    for i in range(0,len(pak_team)):
+        print(f"{pak_list[i]:<25}{str(cc2[i][1]+cc2[i][2]*2+cc2[i][3]*3+cc2[i][4]*4+cc2[i][5]*5+cc2[i][6]*6+cc2[i][8]+cc2[i][9]+cc2[i][10]+cc2[i][11]):<15}{str(cc2[i][7]):<15}{str(cc2[i][0]+cc2[i][1]+cc2[i][2]+cc2[i][3]+cc2[i][4]+cc2[i][5]+cc2[i][6]+cc2[i][7]+cc2[i][9]+cc2[i][10]):<15}{str(cc2[i][4]):<10}{str(cc2[i][6]):<10}",file=op)    
     
 #This shall be the last lines of the code.
 end_time = datetime.now()

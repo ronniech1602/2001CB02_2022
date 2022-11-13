@@ -1,11 +1,13 @@
 from datetime import datetime
 start_time = datetime.now()
 
-import csv
+import csv #importing csv module
 
+#calculating for first innings
 f = open("pak_inns1.txt","r",newline='') 
-file = csv.DictReader(f,fieldnames=["from-to","runs"],restkey="alpha")
+file = csv.DictReader(f,fieldnames=["from-to","runs"],restkey="alpha") #reading the text file as dictionary
 
+#parsing data for calculations
 from_to=[]
 data=[]
 datax=[]
@@ -17,8 +19,10 @@ for i in data:
     x=i.split(" ",maxsplit=1)
     datax.append(x[1])
 
+#defining the teams as dictionaries
 pak_team={'Babar Azam(c)':'Babar Azam', 'Mohammad Rizwan(w)':'Rizwan', 'Fakhar Zaman':'Fakhar Zaman', 'Iftikhar Ahmed':'Iftikhar Ahmed', 'Khushdil Shah':'Khushdil', 'Asif Ali':'Asif Ali', 'Shadab Khan':'Shadab Khan', 'Mohammad Nawaz':'Mohammad Nawaz', 'Naseem Shah':'Naseem Shah', 'Haris Rauf':'Haris Rauf', 'Shahnawaz Dahani':'Dahani'}
 ind_team={'Rohit Sharma(c)':'Rohit', 'KL Rahul':'Rahul', 'Virat Kohli':'Kohli', 'Suryakumar Yadav':'Suryakumar Yadav', 'Dinesh Karthik(w)':'Karthik', 'Hardik Pandya':'Hardik Pandya', 'Ravindra Jadeja':'Jadeja', 'Bhuvneshwar Kumar':'Bhuvneshwar', 'Avesh Khan':'Avesh Khan', 'Yuzvendra Chahal':'Chahal', 'Arshdeep Singh':'Arshdeep Singh'}
+#splitting text into names , over coordinates and events(runs,wickets,extras)
 pak=[]
 ind=[]
 overs=[]
@@ -48,7 +52,8 @@ for i in datax:
     if len(c)>1:
         runf.append(c[0])
         runs.append(c[1])
-    
+
+#list 'c' contains data for all pakistan batsmen    
 c=[]
 for i in pak_team.keys():
     c_0=0
@@ -105,6 +110,7 @@ for i in pak_team.keys():
     d=[c_0,c_1,c_2,c_3,c_4,c_5,c_6,c_wic,c_wide,c_bye,c_lb,c_nb]
     c.append(d)
 
+#list 'cc' contains data for all indian bowlers 
 cc=[]
 for i in ind_team.keys():
     c_0=0
@@ -160,7 +166,8 @@ for i in ind_team.keys():
                     pass
     d=[c_0,c_1,c_2,c_3,c_4,c_5,c_6,c_wic,c_wide,c_bye,c_lb,c_nb]
     cc.append(d)
-    
+
+#calculating for second innings    
 f2 = open("india_inns2.txt","r",newline='') 
 file2 = csv.DictReader(f2,fieldnames=["from-to","runs"],restkey="alpha")
 
@@ -197,7 +204,8 @@ for i in datax2:
     if len(p)>1:
         runf2.append(p[0])
         runs2.append(p[1])
-        
+
+#list 'c2' contains data for all indian batsmen         
 c2=[]
 for i in ind_team.keys():
     c_0=0
@@ -254,6 +262,7 @@ for i in ind_team.keys():
     d2=[c_0,c_1,c_2,c_3,c_4,c_5,c_6,c_wic,c_wide,c_bye,c_lb,c_nb]
     c2.append(d2)
 
+#list 'cc2' contains data for all pakistan bowlers 
 cc2=[]
 for i in pak_team.keys():
     c_0=0
@@ -310,18 +319,21 @@ for i in pak_team.keys():
     d2=[c_0,c_1,c_2,c_3,c_4,c_5,c_6,c_wic,c_wide,c_bye,c_lb,c_nb]
     cc2.append(d2)
 
+#fucntion to calculate total score
 def totalscore(x):
     y=0
     for i in x:
         y=y+i[1]+i[2]*2+i[3]*3+i[4]*4+i[5]*5+i[6]*6+i[8]+i[9]+i[10]+i[11]
     return(y)
 
+#function to calculate total wickets
 def wickets(z):
     y2=0
     for i in z:
         y2=y2+i[7]
     return(y2) 
 
+#writing to the text file 'scorecard.txt'
 pak_list=list(pak_team.keys())
 ind_list=list(ind_team.keys())
 with open('scorecard.txt','w') as op:
@@ -351,3 +363,5 @@ with open('scorecard.txt','w') as op:
 #This shall be the last lines of the code.
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
+
+#program completed ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)

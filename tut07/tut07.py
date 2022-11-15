@@ -742,6 +742,183 @@ for file in os.listdir():
                 ws.cell(row=22+13*x,column=36+i).value=A60[i]
                 ws.cell(row=23+13*x,column=36+i).value=A70[i]
                 ws.cell(row=24+13*x,column=36+i).value=A80[i]
+                
+    #tut03 material
+    #pos is a list of lists , with each list containing the indices of a particular octant number from list7
+    octants=[1,-1,2,-2,3,-3,4,-4]
+    pos=[]
+    for i in range(0,8):
+        l=[]
+        pos.append(l)
+
+    for x in range(0,len(list7)):
+        if list7[x]==1:
+            pos[0].append(x)
+        elif list7[x]==-1:
+            pos[1].append(x)
+        elif list7[x]==2:
+            pos[2].append(x)
+        elif list7[x]==-2:
+            pos[3].append(x)
+        elif list7[x]==3:
+            pos[4].append(x)
+        elif list7[x]==-3:
+            pos[5].append(x)
+        elif list7[x]==4:
+            pos[6].append(x)
+        elif list7[x]==-4:
+            pos[7].append(x)
+
+    #forming the sublists of consecutive integers from lists in pos        
+    x1=[]
+    sx1=[]
+    c1=-1
+    for n in pos[0]:
+        if c1+1!=n:           
+            if sx1:              
+                x1.append(sx1)
+                sx1=[]
+        sx1.append(n)
+        c1=n
+    if sx1:
+        x1.append(sx1)
+
+    v1=[len(x1[i]) for i in range(0,len(x1))] #v1 contains lengths of lists formed in x1
+    y1=max(v1) #longest list length in x1 , which is the longest length for which the corresponding octant appears in list7
+    z1=v1.count(max(v1)) #count of longest list length in x1
+
+    x1=[]
+    sx1=[]
+    c1=-1
+    for n in pos[1]:
+        if c1+1!=n:           
+            if sx1:              
+                x1.append(sx1)
+                sx1=[]
+        sx1.append(n)
+        c1=n
+    if sx1:
+        x1.append(sx1)
+
+    v2=[len(x1[i]) for i in range(0,len(x1))]
+    y2=max(v2)
+    z2=v2.count(max(v2))
+
+    x1=[]
+    sx1=[]
+    c1=-1
+    for n in pos[2]:
+        if c1+1!=n:           
+            if sx1:              
+                x1.append(sx1)
+                sx1=[]
+        sx1.append(n)
+        c1=n
+    if sx1:
+        x1.append(sx1)
+
+    v3=[len(x1[i]) for i in range(0,len(x1))]
+    y3=max(v3)
+    z3=v3.count(max(v3))
+
+    x1=[]
+    sx1=[]
+    c1=-1
+    for n in pos[3]:
+        if c1+1!=n:           
+            if sx1:              
+                x1.append(sx1)
+                sx1=[]
+        sx1.append(n)
+        c1=n
+    if sx1:
+        x1.append(sx1)
+
+    v4=[len(x1[i]) for i in range(0,len(x1))]
+    y4=max(v4)
+    z4=v4.count(max(v4))
+
+    x1=[]
+    sx1=[]
+    c1=-1
+    for n in pos[4]:
+        if c1+1!=n:           
+            if sx1:              
+                x1.append(sx1)
+                sx1=[]
+        sx1.append(n)
+        c1=n
+    if sx1:
+        x1.append(sx1)
+
+    v5=[len(x1[i]) for i in range(0,len(x1))]
+    y5=max(v5)
+    z5=v5.count(max(v5))
+
+    x1=[]
+    sx1=[]
+    c1=-1
+    for n in pos[5]:
+        if c1+1!=n:           
+            if sx1:              
+                x1.append(sx1)
+                sx1=[]
+        sx1.append(n)
+        c1=n
+    if sx1:
+        x1.append(sx1)
+
+    v6=[len(x1[i]) for i in range(0,len(x1))]
+    y6=max(v6)
+    z6=v6.count(max(v6))
+
+    x1=[]
+    sx1=[]
+    c1=-1
+    for n in pos[6]:
+        if c1+1!=n:           
+            if sx1:              
+                x1.append(sx1)
+                sx1=[]
+        sx1.append(n)
+        c1=n
+    if sx1:
+        x1.append(sx1)
+
+    v7=[len(x1[i]) for i in range(0,len(x1))]
+    y7=max(v7)
+    z7=v7.count(max(v7))
+
+    x1=[]
+    sx1=[]
+    c1=-1
+    for n in pos[7]:
+        if c1+1!=n:           
+            if sx1:              
+                x1.append(sx1)
+                sx1=[]
+        sx1.append(n)
+        c1=n
+    if sx1:
+        x1.append(sx1)
+
+    v8=[len(x1[i]) for i in range(0,len(x1))]
+    y8=max(v8)
+    z8=v8.count(max(v8))
+
+    #Y has all the longest length of appearances of all octants and Z has its counts
+    Y=[y1,y2,y3,y4,y5,y6,y7,y8]
+    Z=[z1,z2,z3,z4,z5,z6,z7,z8]
+
+    #writing the longest subsequence length and count to excel
+    ws.cell(row=1,column=45).value='Longest Subsequence length'
+    ws.cell(row=3,column=45).value="Count"
+    ws.cell(row=3,column=46).value="Longest Subsequence Length"
+    ws.cell(row=3,column=47).value="Count"
+    for i in range(0,8):
+        ws.cell(row=4+i,column=45).value=octants[i]
+        ws.cell(row=4+i,column=46).value=Y[i]
+        ws.cell(row=4+i,column=47).value=Z[i]
 
 
     os.chdir(cwd)

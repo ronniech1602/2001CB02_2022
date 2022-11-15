@@ -1,12 +1,34 @@
 import os
+import openpyxl
 from openpyxl import load_workbook
 import pandas as pd
 from datetime import datetime
 start_time = datetime.now()
+from openpyxl.styles import Border,Side,PatternFill
 
+#border function
+def border(rs,re,cs,ce):
+    top=Side(border_style='medium',color='000000')
+    bottom=Side(border_style='medium',color='000000')
+    left=Side(border_style='medium',color='000000')
+    right=Side(border_style='medium',color='000000')
+    border=Border(top=top,bottom=bottom,left=left,right=right)
+    for r in range(rs,re+1):
+        for co in range(cs,ce+1):
+            ws.cell(row=r,column=co).border=border
+ 
+#cell coloring function
+def cell_color(cell_row,cell_column):
+    fill=PatternFill(patternType='solid',fgColor='FFFF00')
+    ws.cell(row=cell_row,column=cell_column).fill=fill
+    
+#using os module to switch between directories    
 filenames=[]
 path='input'
 path_out='output'
+exist=os.path.exists(path_out)
+if not exist:
+    os.mkdir('output')
 cwd=os.getcwd()
 os.chdir(path)
 
@@ -220,25 +242,41 @@ for file in os.listdir():
         list11=list(list9[i].items())
         list10.append(list11)
         
-    #writing the ranks in the excel file
+    #writing the ranks in the excel file and coloring the rank 1 cells as yellow
     for i in range(0,p):
         for j in range(0,8):
             if list10[i][j][0]==1:
                 ws.cell(row=4+i,column=23).value=8-j
+                if 8-j==1:
+                    cell_color(4+i,23)
             if list10[i][j][0]==-1:
                 ws.cell(row=4+i,column=24).value=8-j
+                if 8-j==1:
+                    cell_color(4+i,24)
             if list10[i][j][0]==2:
                 ws.cell(row=4+i,column=25).value=8-j
+                if 8-j==1:
+                    cell_color(4+i,25)
             if list10[i][j][0]==-2:
                 ws.cell(row=4+i,column=26).value=8-j
+                if 8-j==1:
+                    cell_color(4+i,26)
             if list10[i][j][0]==3:
                 ws.cell(row=4+i,column=27).value=8-j
+                if 8-j==1:
+                    cell_color(4+i,27)
             if list10[i][j][0]==-3:
-                ws.cell(row=4+i,column=28).value=8-j    
+                ws.cell(row=4+i,column=28).value=8-j
+                if 8-j==1:
+                    cell_color(4+i,28)
             if list10[i][j][0]==4:
-                ws.cell(row=4+i,column=29).value=8-j    
+                ws.cell(row=4+i,column=29).value=8-j
+                if 8-j==1:
+                    cell_color(4+i,29)
             if list10[i][j][0]==-4:
                 ws.cell(row=4+i,column=30).value=8-j
+                if 8-j==1:
+                    cell_color(4+i,30)
                 
     #mapping octant id with octant names
     dic_on={1:"Internal outward interaction",-1:"External Outward Interaction",2:"External Ejection",-2:"Internal Ejection",3:"External Inward Interaction",-3:"Internal Inward Interaction",4:"Internal Sweep",-4:"External Sweep"}
@@ -254,12 +292,16 @@ for file in os.listdir():
     for i in range(0,8):
             ws.cell(row=9+i+p,column=17).value=list12.count(list8[i])
     
+    #applying border
+    border(1,3+p,13,32)
+    border(8+p,16+p,15,17)
+    
     #tut02 material
     #creating a table for overall count transition
     ws.cell(row=1,column=35).value="Overall Count Transition"
     ws.cell(row=2,column=36).value="To"
     ws.cell(row=4,column=34).value="From"
-    ws.cell(row=3,column=35).value="Count"
+    ws.cell(row=3,column=35).value="Octant"
     for i in range(0,8):
         ws.cell(row=3,column=36+i).value=list8[i]
         ws.cell(row=4+i,column=35).value=list8[i]
@@ -742,6 +784,11 @@ for file in os.listdir():
                 ws.cell(row=22+13*x,column=36+i).value=A60[i]
                 ws.cell(row=23+13*x,column=36+i).value=A70[i]
                 ws.cell(row=24+13*x,column=36+i).value=A80[i]
+    
+    #applying border
+    border(3,11,35,43)
+    for x in range(0,p):
+        border(16+13*x,24+13*x,35,43)
                 
     #tut03 material
     #pos is a list of lists , with each list containing the indices of a particular octant number from list7
@@ -919,79 +966,85 @@ for file in os.listdir():
         ws.cell(row=4+i,column=45).value=octants[i]
         ws.cell(row=4+i,column=46).value=Y[i]
         ws.cell(row=4+i,column=47).value=Z[i]
+        
+    #applying border
+    border(3,11,45,47)
     
     #tut04 material
     #creating a list of time values using pandas and writing the header of skeleton    
-    try:
-        listT=df['T'].tolist()
-        ws.cell(row=1,column=49).value='Longest Subsequence Length With Time'
-        ws.cell(row=3,column=49).value="Octant"
-        ws.cell(row=3,column=51).value="Longest Subsequence Length"
-        ws.cell(row=3,column=50).value="Count"
-        #creating the skeleton for mentioning time ranges with counts of longest subsequences
-        o=0
-        for i in range(0,8):
-            ws.cell(row=4+i+o,column=49).value=octants[i]
-            ws.cell(row=4+i+o,column=51).value=Y[i]
-            ws.cell(row=4+i+o,column=50).value=Z[i]
-            ws.cell(row=5+i+o,column=49).value="Time"
-            ws.cell(row=5+i+o,column=50).value="From"
-            ws.cell(row=5+i+o,column=51).value="To"
-            o=o+Z[i]+1
     
-        #creating lists to hold the longest subsequence indices of each octant    
-        x_1=[]    
-        for x in x1:
-            if len(x)==y1:
-                x_1.append(x)
-        x_2=[]    
-        for x in x2:
-            if len(x)==y2:
-                x_2.append(x)
-        x_3=[]    
-        for x in x3:
-            if len(x)==y3:
-                x_3.append(x)
-        x_4=[]    
-        for x in x4:
-            if len(x)==y4:
-                x_4.append(x)
-        x_5=[]    
-        for x in x5:
-            if len(x)==y5:
-                x_5.append(x)
-        x_6=[]    
-        for x in x6:
-            if len(x)==y6:
-                x_6.append(x)
-        x_7=[]    
-        for x in x7:
-            if len(x)==y7:
-                x_7.append(x)
-        x_8=[]    
-        for x in x8:
-            if len(x)==y8:
-                x_8.append(x)
-    
-        #writing the values of time ranges to excel using the above created lists x_1 to x_8
-        X=[x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8]
-        o=0        
-        for i in range(0,8):
-            for n in range(0,Z[i]):
-                ws.cell(row=6+i+o+n,column=50).value=str(listT[X[i][n][0]])
-                ws.cell(row=6+i+o+n,column=51).value=str(listT[X[i][n][-1]])
-            o=o+Z[i]+1
-    except:
-        print('error while adding longest subsequence length with time')
-        pass
+    listT=df['T'].tolist()
+    ws.cell(row=1,column=49).value='Longest Subsequence Length With Time'
+    ws.cell(row=3,column=49).value="Octant"
+    ws.cell(row=3,column=51).value="Longest Subsequence Length"
+    ws.cell(row=3,column=50).value="Count"
+    #creating the skeleton for mentioning time ranges with counts of longest subsequences
+    o=0
+    for i in range(0,8):
+        ws.cell(row=4+i+o,column=49).value=octants[i]
+        ws.cell(row=4+i+o,column=51).value=Y[i]
+        ws.cell(row=4+i+o,column=50).value=Z[i]
+        ws.cell(row=5+i+o,column=49).value="Time"
+        ws.cell(row=5+i+o,column=50).value="From"
+        ws.cell(row=5+i+o,column=51).value="To"
+        o=o+Z[i]+1
 
+    #creating lists to hold the longest subsequence indices of each octant    
+    x_1=[]    
+    for x in x1:
+        if len(x)==y1:
+            x_1.append(x)
+    x_2=[]    
+    for x in x2:
+        if len(x)==y2:
+            x_2.append(x)
+    x_3=[]    
+    for x in x3:
+        if len(x)==y3:
+            x_3.append(x)
+    x_4=[]    
+    for x in x4:
+        if len(x)==y4:
+            x_4.append(x)
+    x_5=[]    
+    for x in x5:
+        if len(x)==y5:
+            x_5.append(x)
+    x_6=[]    
+    for x in x6:
+        if len(x)==y6:
+            x_6.append(x)
+    x_7=[]    
+    for x in x7:
+        if len(x)==y7:
+            x_7.append(x)
+    x_8=[]    
+    for x in x8:
+        if len(x)==y8:
+            x_8.append(x)
 
+    #writing the values of time ranges to excel using the above created lists x_1 to x_8
+    X=[x_1,x_2,x_3,x_4,x_5,x_6,x_7,x_8]
+    o=0        
+    for i in range(0,8):
+        for n in range(0,Z[i]):
+            ws.cell(row=6+i+o+n,column=50).value=str(listT[X[i][n][0]])
+            ws.cell(row=6+i+o+n,column=51).value=str(listT[X[i][n][-1]])
+        o=o+Z[i]+1
+        
+    #applying border
+    border(3,11+o,49,51)
+
+    #switching back to root directory and then to output folder
     os.chdir(cwd)
     os.chdir(path_out)
     wb.save('{}_vel_octant_analysis_mod_{}.xlsx'.format(file_name,str(mod)))
     os.chdir(cwd)
+    #switching back to input folder for running the loop again
     os.chdir(path)
 
 #This shall be the last lines of the code.
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
+
+#program completed ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)

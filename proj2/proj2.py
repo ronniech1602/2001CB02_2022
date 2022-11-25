@@ -1050,7 +1050,7 @@ def output_compute(file_in,Mod_input):
                 os.mkdir('{}\output'.format(os.getcwd()))
             os.chdir(chkpath)
             now=datetime.now()
-            dtnow=now.strftime("%Y-%m-%d_%H-%M-%S")
+            dtnow=now.strftime("%Y-%m-%d-%H-%M-%S")
             wb.save('{}_{}_{}.xlsx'.format(file_name,Mod_input,dtnow))
             os.chdir(file_in)    
     

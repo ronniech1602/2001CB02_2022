@@ -12,7 +12,7 @@ st.set_page_config(page_title='Octant Analysis',page_icon=':cyclone:',layout='wi
 
 with st.container():
     st.header('Welcome To Our CS384 Project!')
-    st.subheader('Made By 2001CB02(ABHAY CHAHAR) and 2001CB34(Md.Faiaz Alam)')
+    st.subheader('Made By 2001CB02(Abhay Chahar) and 2001CB34(Md.Faiaz Alam)')
     st.write('##')
     
 cwd=os.getcwd()

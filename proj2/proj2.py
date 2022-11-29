@@ -11,6 +11,7 @@ start_time = datetime.now()
 #Page Configuration
 st.set_page_config(page_title='Octant Analysis',page_icon=':cyclone:',layout='wide')
 
+#sidebar unsertion and configuration
 with st.sidebar:
     select=option_menu(menu_title='Main Menu',options=['Home','Path Provider','File Uploader','Made By'],styles={
         "container": {"padding": "5!important", "background-color": "#00172B"},
@@ -18,26 +19,28 @@ with st.sidebar:
         "nav-link": {"font-size": "16px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
         "nav-link-selected": {"background-color": "#0083B8"}})
 
+#if home is selected from the sidebar , a general page description with few instructions are shown
 if select=='Home':
-    st.header('Hello!')
-    st.subheader('This Is An Application Programmed For Data Analysis For CS384')
+    st.header('Hello!') #header element
+    st.subheader('This Is An Application Programmed For Data Analysis For CS384') #subheader element
+    st.write('##') #line skip
     st.write('##')
-    st.write('##')
-    st.write('Welcome! Thank You For Visiting.')
+    st.write('Welcome! Thank You For Visiting.') #normal sized text element
     st.write('Please note the following:')
     st.write(r"In the path provider, provide the destination to the directory while excluding the actual file in the path (For example,in 'C:\Users\Dom\Documents\Input' the input.xlsx file should be present in the Input folder).")
     st.write("In the file uploader, the files to be computed are to be uploaded.")
     st.write('##')
     st.write('HAVE A WONDERFUL DAY!')
 
-
+#if path provider is selected from the sidebar 
 if select=='Path Provider':
     with st.container():
         st.header('Welcome To Path Provider')
         st.write('##')
         
     cwd=os.getcwd()
-        
+    
+    #main program to be executed for path provider    
     def output_compute(file_in,Mod_input):
         
         os.chdir(file_in)
@@ -45,7 +48,7 @@ if select=='Path Provider':
             
             file_name_i=os.path.basename(file)
             file_name=os.path.splitext(file_name_i)[0]
-            file_ext=os.path.splitext(file_name_i)[1]
+            file_ext=os.path.splitext(file_name_i)[1] #extensions 
         
             if file_ext=='.xlsx':
                 #border function
@@ -1080,14 +1083,14 @@ if select=='Path Provider':
     
             
             
-        
+    #instructions to streamlit interface  
     with st.container():
-        File_input=st.text_input('Provide The File Directory :',key='fd')
-        Mod_input=int(st.number_input('Provide The Mod Value :',key='mi'))
-        if st.button('Compute',key='bt'):
+        File_input=st.text_input('Provide The File Directory :',key='fd') #getting the path
+        Mod_input=int(st.number_input('Provide The Mod Value :',key='mi')) #getting the mod value
+        if st.button('Compute',key='bt'): #if button is pressed , then the main program executes
             output_compute(File_input,Mod_input)
 
-
+#if file uploader is selected from the sidebar 
 if select=='File Uploader':
     with st.container():
         st.header('Welcome To File Uploader!')
@@ -1097,7 +1100,7 @@ if select=='File Uploader':
         
     def output_compute(file_in,Mod_input):
         
-        for file in file_in:
+        for file in file_in: 
             
             file_name=os.path.splitext(file.name)[0]
             file_ext=os.path.splitext(file.name)[1]
@@ -2134,13 +2137,14 @@ if select=='File Uploader':
     
             
             
-        
+    #intructions to streamlit interface  
     with st.container():
-        File_Upload=st.file_uploader('Upload The Files To Be Computed :',type=['xlsx','csv'],accept_multiple_files=True,key='fu')
+        File_Upload=st.file_uploader('Upload The Files To Be Computed :',type=['xlsx','csv'],accept_multiple_files=True,key='fu') #uploader widget
         Mod_input=int(st.number_input('Provide The Mod Value :',key='mi'))
         if st.button('Compute',key='bt'):
             output_compute(File_Upload,Mod_input)
 
+#if made by is selected from the sidebar 
 if select=='Made By':
     with st.container():
         st.subheader('This Project Is Made By :')
@@ -2150,4 +2154,6 @@ if select=='Made By':
 #This shall be the last lines of the code.
 end_time = datetime.now()
 print('Duration of Program Execution: {}'.format(end_time - start_time))
+
+#program completed ( made on SPYDER IDE 5.3.3 with PYTHON 3.8.10 64 BIT)
 

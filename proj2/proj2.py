@@ -7,6 +7,7 @@ from datetime import datetime
 from streamlit_option_menu import option_menu
 start_time = datetime.now()
 
+cwd=os.getcwd()
 
 #Page Configuration
 st.set_page_config(page_title='Octant Analysis',page_icon=':cyclone:',layout='wide')
@@ -38,7 +39,7 @@ if select=='Path Provider':
         st.header('Welcome To Path Provider')
         st.write('##')
         
-    cwd=os.getcwd()
+    
     
     #main program to be executed for path provider    
     def output_compute(file_in,Mod_input):
@@ -1096,7 +1097,7 @@ if select=='File Uploader':
         st.header('Welcome To File Uploader!')
         st.write('##')
         
-    cwd=os.getcwd()
+    
         
     def output_compute(file_in,Mod_input):
         
@@ -2122,10 +2123,11 @@ if select=='File Uploader':
                 border(3,11+o,49,51)
                 
                 #switching back to root directory and then to output folder
-                chkpath='{}\output'.format(os.getcwd())
+                os.chdir(cwd)
+                chkpath='{}\output'.format(cwd)
                 isexist=os.path.exists(chkpath)
                 if not isexist:
-                    os.mkdir('{}\output'.format(os.getcwd()))
+                    os.mkdir('{}\output'.format(cwd))
                 os.chdir(chkpath)
                 now=datetime.now()
                 dtnow=now.strftime("%Y-%m-%d-%H-%M-%S")
